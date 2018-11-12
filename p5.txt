@@ -247,17 +247,33 @@ Ekiga para ver todo el proceso3 .
 19. Observa las diferencias en el inicio de la conversación entre el entorno
 del laboratorio y el del ejercicio anterior4 :
 * ¿Se utilizan DNS y STUN? ¿Por qué?
+    Sí, el DNS es necesario para la asignación de nombres de dominio a la IP y el uso de STUN para conocer la IP que está tras el NAT.
+    
 * ¿Son diferentes el registro y la descripción de la sesión?
+    Podemos ver que son diferentes en el campo Allow, ya que el REGISTER que hemos capturado tiene el siguiente campo: 
+    Allow: INVITE,ACK,OPTIONS,BYE,CANCEL,SUBSCRIBE,NOTIFY,REFER,MESSAGE,INFO,PING,PRACK, es decir, permite los métodos que se mencionan en dicho campo. En cambio en la captura que analizamos con anterioridad podemos observar que el campo Allow era más reducido, ya que solamente permitía los métodos: INVITE, ACK, OPTIONS, BYE, CANCEL, NOTIFY, REFER, MESSAGE.
+    Otra de las diferencias es que se emplean puertos distintos.
 
 20. Identifica las diferencias existentes entre esta conversación y la conversación anterior:
 * ¿Cuántos flujos tenemos?
+    Tenemos 2 flujos
+    
 * ¿Cuál es su periodicidad?
+    
 * ¿Cuánto es el valor máximo del delta y los valores medios y
 máximo del jitter?
+    Source Port--->5090 ; Max delta--->30.646 ; Mean jitter--->3.476 ; Max jitter--->6.294
+    Source Port--->34810 ; Max delta--->75.600 ; Mean jitter--->1.393 ; Max jitter--->6.294
+
+
 * ¿Podrı́as reproducir la conversación desde Wireshark? ¿Cómo?
 Comprueba que poniendo un valor demasiado pequeño para el
 buffer de jitter, la conversación puede no tener la calidad necesaria.
+    Para poder reproducir la conversación desde Wireshark, debemos ir al Telephony y elegir la opción VoIP, después damos al play y luego decode, consiguiendo asi reproducirlo. Al hacerlo con un buffer de jitter muy pequeño la conversación se escucha entrecortada, sepierden palabras.
+
 * ¿Sabrı́as decir qué tipo de servicio ofrece sip:500@ekiga.net?
+    Ofrece un servicio de canciones como podemor comprabar al reproducir el audio.
+
 [Al terminar el ejercicio es recomendable hacer commit de los ficheros modificados]
 
 
